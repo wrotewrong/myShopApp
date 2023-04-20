@@ -17,7 +17,7 @@ model Product {
   amount      Int
   description String @db.VarChar(1000)
   
-  orders    Order[]
+  // orders    Order[]
   images    Image[]
 }
 
@@ -30,11 +30,21 @@ model Image {
 
 model Order {
   id        String  @id @default(uuid())
-  product   Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
-  productId String?
+  // product   Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+  // productId String?
   user      User? @relation(fields: [userId], references: [id], onDelete: SetNull)
   userId    String?
+  orderedProducts OrderedProduct[]
 
+}
+
+model OrderedProduct {
+  id          String @id
+  price       Int
+  amount      Int
+  details     String @db.VarChar(200)
+  order       Order @relation(fields: [orderId], references: [id])
+  orderId     String
 }
 
 enum Role {

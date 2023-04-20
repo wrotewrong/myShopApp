@@ -4,8 +4,8 @@ import {
   NotFoundException,
   Param,
   ParseUUIDPipe,
-  Put,
-  Body,
+  // Put,
+  // Body,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
 
