@@ -4,11 +4,11 @@ import {
   Param,
   ParseUUIDPipe,
   NotFoundException,
-  // Post,
-  // Body,
+  Post,
+  Body,
 } from '@nestjs/common';
 import { OrdersService } from './orders.service';
-// import { CreateOrderDTO } from './dtos/create-order.dto';
+import { CreateOrderDTO } from './dtos/create-order.dto';
 
 @Controller('orders')
 export class OrdersController {
@@ -28,8 +28,8 @@ export class OrdersController {
     return order;
   }
 
-  // @Post('/')
-  // create(@Body() orderData: CreateOrderDTO) {
-  //   return this.ordersService.create(orderData);
-  // }
+  @Post('/')
+  create(@Body() orderData: CreateOrderDTO) {
+    return this.ordersService.create(orderData);
+  }
 }

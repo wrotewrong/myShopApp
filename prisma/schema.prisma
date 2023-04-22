@@ -40,7 +40,7 @@ model ProductOrders {
   name          String        
   price         Int
   orderedAmount Int
-  details       String
+  details       String?
   product       Product @relation(fields: [productId], references: [id])
   productId     String
   order         Order @relation(fields: [orderId], references: [id])
