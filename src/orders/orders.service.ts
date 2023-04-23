@@ -36,6 +36,7 @@ export class OrdersService {
         },
         include: {
           products: true,
+          user: true,
         },
       });
     } catch (error) {
