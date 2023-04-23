@@ -1,12 +1,11 @@
+import { Routes } from 'react-router-dom';
+import Main from './components/layout/Main/Main';
+
 function App() {
   return (
-    <div className="App">
-      <p>Yo</p>
-      <img
-        src="http://localhost:8000/images/jeansBlack.jpg"
-        alt="black jeans"
-      />
-    </div>
+    <Main>
+      <Routes></Routes>
+    </Main>
   );
 }
 
