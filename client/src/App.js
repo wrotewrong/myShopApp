@@ -1,11 +1,23 @@
-import { Routes } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Main from './components/layout/Main/Main';
+import Home from './components/pages/Home/Home';
+import SingleProductPage from './components/pages/SingleProductPage/SingleProductPage';
+import NotFound from './components/pages/NotFound/NotFound';
+import Cart from './components/pages/CartPage/CartPage';
+import Container from 'react-bootstrap/Container';
 
 function App() {
   return (
-    <Main>
-      <Routes></Routes>
-    </Main>
+    <Container>
+      <Main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/product/:id" element={<SingleProductPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Main>
+    </Container>
   );
 }
 
