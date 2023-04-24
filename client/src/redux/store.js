@@ -2,12 +2,12 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
 // import reducers
-import product from './productRedux';
+import products from './productRedux';
 import order from './orderRedux';
 
 // combine reducers
 const rootReducer = combineReducers({
-  product,
+  products,
   order,
 });
 
