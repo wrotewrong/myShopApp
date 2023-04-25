@@ -3,7 +3,7 @@ import { API_URL } from '../config';
 export const getProducts = ({ products }) => products.data;
 
 export const getProductById = ({ products }, id) =>
-  products.dataSingle.find((product) => product._id === id);
+  products.dataSingle.find((product) => product.id === id);
 
 /* ACTIONS */
 const createActionName = (actionName) => `app/product/${actionName}`;
@@ -28,6 +28,16 @@ export const loadProductsRequest = () => {
   };
 };
 
+export const loadProductByIdRequest = (id) => {
+  return async (dispatch) => {
+    await fetch(`${API_URL}/products/${id}`)
+      .then((res) => res.json())
+      .then((res) => {
+        dispatch(loadProductById(res));
+      });
+  };
+};
+
 /* INITIAL STATE */
 
 const initialState = {
@@ -48,7 +58,7 @@ export default function reducer(statePart = initialState, action = {}) {
     case LOAD_PRODUCT_BY_ID:
       return {
         ...statePart,
-        dataSingle: [...action.payload],
+        dataSingle: [action.payload],
         data: [],
       };
     default:

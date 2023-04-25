@@ -3,12 +3,12 @@ import thunk from 'redux-thunk';
 
 // import reducers
 import products from './productRedux';
-import order from './orderRedux';
+import orders from './orderRedux';
 
 // combine reducers
 const rootReducer = combineReducers({
   products,
-  order,
+  orders,
 });
 
 const composeEnhancers =
