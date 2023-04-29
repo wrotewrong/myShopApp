@@ -1,6 +1,6 @@
 /* SELECTORS */
 
-export const getOrders = ({ orders }) => orders.data;
+export const getOrders = ({ orders }) => orders;
 
 export const getOrderById = ({ orders }, id) =>
   orders.dataSingle.find((order) => order.id === id);
@@ -33,11 +33,28 @@ export const postOrder = (payload) => ({
 
 /* THUNKS */
 
+const postOrderRequest = () => {};
+
 /* INITIAL STATE */
 
 const initialState = {
-  userId: 'e519219b-6b62-49a9-9130-5da1be0057ba',
-  products: [],
+  // userId: 'e519219b-6b62-49a9-9130-5da1be0057ba',
+  // products: [
+  //   {
+  //     name: 'Orange Tshirt',
+  //     price: 149,
+  //     orderedAmount: 1,
+  //     details: 'XL',
+  //     productId: 'd8e661b5-e5a3-42ba-ae24-475a6f1c9b79',
+  //   },
+  //   {
+  //     name: 'Black Jeans',
+  //     price: 149,
+  //     orderedAmount: 1,
+  //     details: 'M',
+  //     productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17260',
+  //   },
+  // ],
 };
 
 /* REDUCER */
@@ -45,9 +62,12 @@ const initialState = {
 export default function reducer(statePart = initialState, action = {}) {
   switch (action.type) {
     case CREATE_ORDER:
-      return;
+      return { userId: 'e519219b-6b62-49a9-9130-5da1be0057ba', products: [] };
     case ADD_PRODUCT_TO_ORDER:
-      return;
+      return {
+        ...statePart,
+        products: [...statePart.products, action.payload],
+      };
     case EDIT_ORDER:
       return;
     case POST_ORDER:
