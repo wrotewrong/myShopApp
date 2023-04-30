@@ -4,6 +4,7 @@ import Home from './components/pages/Home/Home';
 import SingleProductPage from './components/pages/SingleProductPage/SingleProductPage';
 import NotFound from './components/pages/NotFound/NotFound';
 import Cart from './components/pages/CartPage/CartPage';
+import Summary from './components/pages/Summary/Summary';
 import Container from 'react-bootstrap/Container';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/summary" element={<Summary />} />
           <Route path="/product/:id" element={<SingleProductPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

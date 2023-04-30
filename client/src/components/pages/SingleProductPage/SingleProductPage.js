@@ -47,6 +47,7 @@ const SingleProductPage = () => {
           price: product.price,
           productAmount: Number(productAmount),
           productId: id,
+          details: '',
         }),
       );
     }
@@ -108,7 +109,10 @@ const SingleProductPage = () => {
             </div>
           </div>
           <div className="col-12 mt-2 row justify-content-end">
-            <form onSubmit={validate(handleAddToCart)}>
+            <form
+              className="col-12 mt-4 row justify-content-center"
+              onSubmit={validate(handleAddToCart)}
+            >
               <div className="mr-2">
                 Amount:
                 <input

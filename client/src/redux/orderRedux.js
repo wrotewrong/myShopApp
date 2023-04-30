@@ -2,6 +2,8 @@
 
 export const getOrders = ({ orders }) => orders;
 
+export const getOrdersProduct = ({ orders }) => orders.products;
+
 export const getOrderById = ({ orders }, id) =>
   orders.dataSingle.find((order) => order.id === id);
 
@@ -9,6 +11,9 @@ export const getOrderById = ({ orders }, id) =>
 const createActionName = (actionName) => `app/order/${actionName}`;
 export const CREATE_ORDER = createActionName('CREATE_ORDER');
 export const ADD_PRODUCT_TO_ORDER = createActionName('ADD_PRODUCT_TO_ORDER');
+export const REMOVE_PRODUCT_FROM_ORDER = createActionName(
+  'REMOVE_PRODUCT_FROM_ORDER',
+);
 export const EDIT_ORDER = createActionName('EDIT_ORDER');
 export const POST_ORDER = createActionName('POST_ORDER');
 
@@ -21,6 +26,10 @@ export const createOrder = (payload) => ({
 export const addProductToOrder = (payload) => ({
   payload,
   type: ADD_PRODUCT_TO_ORDER,
+});
+export const removeProductFromOrder = (payload) => ({
+  payload,
+  type: REMOVE_PRODUCT_FROM_ORDER,
 });
 export const editOrder = (payload) => ({
   payload,
@@ -68,8 +77,22 @@ export default function reducer(statePart = initialState, action = {}) {
         ...statePart,
         products: [...statePart.products, action.payload],
       };
+    case REMOVE_PRODUCT_FROM_ORDER:
+      return {
+        ...statePart,
+        products: statePart.products.filter(
+          (product) => product.productId !== action.payload,
+        ),
+      };
     case EDIT_ORDER:
-      return;
+      return {
+        ...statePart,
+        products: statePart.products.map((product) =>
+          product.productId === action.payload.productId
+            ? { ...product, ...action.payload }
+            : product,
+        ),
+      };
     case POST_ORDER:
       return;
     default:
