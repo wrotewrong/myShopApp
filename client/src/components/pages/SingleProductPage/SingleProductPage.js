@@ -45,7 +45,7 @@ const SingleProductPage = () => {
         addProductToOrder({
           name: product.name,
           price: product.price,
-          productAmount: Number(productAmount),
+          orderedAmount: Number(productAmount),
           productId: id,
           details: '',
         }),

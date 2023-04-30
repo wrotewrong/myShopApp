@@ -12,11 +12,15 @@ const Cart = () => {
   } else {
     return (
       <>
-        <div className="container">
-          <h2> Your order:</h2>
+        <div>
+          <h2> Your cart:</h2>
           {products.map((product) => {
             return (
-              <CartSummary key={product.productId} {...product}></CartSummary>
+              <CartSummary
+                editable={true}
+                key={product.productId}
+                {...product}
+              ></CartSummary>
             );
           })}
         </div>

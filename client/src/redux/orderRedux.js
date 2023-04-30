@@ -1,3 +1,4 @@
+import { API_URL } from '../config';
 /* SELECTORS */
 
 export const getOrders = ({ orders }) => orders;
@@ -42,7 +43,23 @@ export const postOrder = (payload) => ({
 
 /* THUNKS */
 
-const postOrderRequest = () => {};
+export const postOrderRequest = (order) => {
+  return (dispatch) => {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(order),
+    };
+
+    fetch(`${API_URL}/orders`, options).then((res) => {
+      if (res.status === 201) {
+        alert('Your order has been sent!');
+      }
+    });
+  };
+};
 
 /* INITIAL STATE */
 
