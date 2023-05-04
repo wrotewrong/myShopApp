@@ -30,10 +30,14 @@ model Image {
 
 model Order {
   id        String  @id @default(uuid())
-  user      User? @relation(fields: [userId], references: [id], onDelete: SetNull)
-  userId    String?
-  products ProductOrders[]
-
+  // user      User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  // userId    String?
+  products  ProductOrders[]
+  totalCost Int
+  email     String    
+  name      String
+  address   String
+  phone     String
 }
 
 model ProductOrders {
@@ -49,24 +53,24 @@ model ProductOrders {
    @@id([productId, orderId])
 }
 
-enum Role {
-  USER
-  ADMIN
-}
+// enum Role {
+//   USER
+//   ADMIN
+// }
 
-model User {
-  id       String    @id @default(uuid())
-  email    String    @unique
-  name     String
-  address  String
-  role     Role      @default(USER)
-  password Password?
-  orders   Order[]
-}
+// model User {
+//   id       String    @id @default(uuid())
+//   email    String    @unique
+//   name     String
+//   address  String
+//   role     Role      @default(USER)
+//   password Password?
+//   orders   Order[]
+// }
 
-model Password {
-  id       String @id @default(uuid())
-  hashedPassword String
-  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId   String @unique
-}
+// model Password {
+//   id       String @id @default(uuid())
+//   hashedPassword String
+//   user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   userId   String @unique
+// }

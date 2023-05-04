@@ -8,19 +8,23 @@ export class OrdersService {
 
   public getAll(): Promise<Order[]> {
     return this.prismaService.order.findMany({
-      include: { products: true, user: true },
+      include: { products: true },
     });
   }
 
   public getById(id: Order['id']): Promise<Order | null> {
     return this.prismaService.order.findUnique({
       where: { id },
-      include: { products: true, user: true },
+      include: { products: true },
     });
   }
 
   async create(orderData: {
-    userId: Order['userId'];
+    totalCost: Order['totalCost'];
+    email: Order['email'];
+    name: Order['name'];
+    phone: Order['phone'];
+    address: Order['address'];
     products: ProductOrders[];
   }): Promise<Order> {
     const { products, ...otherData } = orderData;
@@ -36,7 +40,6 @@ export class OrdersService {
         },
         include: {
           products: true,
-          user: true,
         },
       });
     } catch (error) {

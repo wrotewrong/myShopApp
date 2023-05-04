@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { PrismaClient, Role } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 const db = new PrismaClient();
 
 function getProducts() {
@@ -31,17 +31,17 @@ function getProducts() {
   ];
 }
 
-function getUsers() {
-  return [
-    {
-      id: 'e519219b-6b62-49a9-9130-5da1be0057ba',
-      email: 'andrzej2@gmail.com',
-      name: 'andrzej',
-      address: 'Lodz',
-      role: Role.USER,
-    },
-  ];
-}
+// function getUsers() {
+//   return [
+//     {
+//       id: 'e519219b-6b62-49a9-9130-5da1be0057ba',
+//       email: 'andrzej2@gmail.com',
+//       name: 'andrzej',
+//       address: 'Lodz',
+//       role: Role.USER,
+//     },
+//   ];
+// }
 
 // function getOrderedProducts() {
 //   return [
@@ -84,11 +84,11 @@ async function seed() {
     }),
   );
 
-  await Promise.all(
-    getUsers().map((user) => {
-      return db.user.create({ data: user });
-    }),
-  );
+  // await Promise.all(
+  //   getUsers().map((user) => {
+  //     return db.user.create({ data: user });
+  //   }),
+  // );
 
   // await Promise.all(
   //   getOrderedProducts().map(({ orderId, ...orderedProductsData }) => {

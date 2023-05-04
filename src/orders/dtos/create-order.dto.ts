@@ -11,13 +11,37 @@ import {
   Max,
   ValidateNested,
   ArrayNotEmpty,
+  Length,
+  IsEmail,
+  MaxLength,
 } from 'class-validator';
 
 export class CreateOrderDTO {
+  @Min(1)
   @IsNotEmpty()
-  @IsUUID()
+  @IsInt()
+  totalCost: number;
+
+  @IsNotEmpty()
   @IsString()
-  userId: string;
+  @IsEmail()
+  @MaxLength(50)
+  email: string;
+
+  @IsNotEmpty()
+  @IsString()
+  @MaxLength(30)
+  name: string;
+
+  @IsNotEmpty()
+  @IsString()
+  @MaxLength(100)
+  address: string;
+
+  @IsNotEmpty()
+  @IsString()
+  @Length(7, 18)
+  phone: string;
 
   @ArrayNotEmpty()
   @IsArray()
@@ -42,6 +66,7 @@ export class ProductOrdersDTO {
 
   @IsOptional()
   @IsString()
+  @MaxLength(500)
   details: string;
 
   @IsNotEmpty()

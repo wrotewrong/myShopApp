@@ -10,7 +10,7 @@ export const getOrderById = ({ orders }, id) =>
 
 /* ACTIONS */
 const createActionName = (actionName) => `app/order/${actionName}`;
-export const CREATE_ORDER = createActionName('CREATE_ORDER');
+// export const CREATE_ORDER = createActionName('CREATE_ORDER');
 export const ADD_PRODUCT_TO_ORDER = createActionName('ADD_PRODUCT_TO_ORDER');
 export const REMOVE_PRODUCT_FROM_ORDER = createActionName(
   'REMOVE_PRODUCT_FROM_ORDER',
@@ -20,10 +20,10 @@ export const POST_ORDER = createActionName('POST_ORDER');
 
 /* ACTION CREATORS */
 
-export const createOrder = (payload) => ({
-  payload,
-  type: CREATE_ORDER,
-});
+// export const createOrder = (payload) => ({
+//   payload,
+//   type: CREATE_ORDER,
+// });
 export const addProductToOrder = (payload) => ({
   payload,
   type: ADD_PRODUCT_TO_ORDER,
@@ -71,8 +71,8 @@ const initialState = localStorage.getItem('cartProducts')
 
 export default function reducer(statePart = initialState, action = {}) {
   switch (action.type) {
-    case CREATE_ORDER:
-      return { userId: 'e519219b-6b62-49a9-9130-5da1be0057ba', products: [] };
+    // case CREATE_ORDER:
+    //   return { userId: 'e519219b-6b62-49a9-9130-5da1be0057ba', products: [] };
     case ADD_PRODUCT_TO_ORDER:
       return {
         ...statePart,

@@ -24,28 +24,4 @@ export class ProductsController {
     if (!book) throw new NotFoundException('Book not found');
     return book;
   }
-
-  // @Put('/:id')
-  // async update(
-  //   @Param('id', new ParseUUIDPipe()) id: string,
-  //   @Body('orderedAmount') orderedAmount: number,
-  // ) {
-  //   if (!(await this.productsService.getById(id)))
-  //     throw new NotFoundException('Product not found');
-
-  //   await this.productsService.updateAmountById(id, orderedAmount);
-  //   return { success: true };
-  // }
-
-  // @Put('/:id')
-  // async update(
-  //   @Param('id', new ParseUUIDPipe()) id: string,
-  //   @Body('amount') amount: number,
-  // ) {
-  //   if (!(await this.productsService.getById(id)))
-  //     throw new NotFoundException('Product not found');
-
-  //   await this.productsService.updateAmountById(id, amount);
-  //   return { success: true };
-  // }
 }
