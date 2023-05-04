@@ -63,25 +63,9 @@ export const postOrderRequest = (order) => {
 
 /* INITIAL STATE */
 
-const initialState = {
-  // userId: 'e519219b-6b62-49a9-9130-5da1be0057ba',
-  // products: [
-  //   {
-  //     name: 'Orange Tshirt',
-  //     price: 149,
-  //     orderedAmount: 1,
-  //     details: 'XL',
-  //     productId: 'd8e661b5-e5a3-42ba-ae24-475a6f1c9b79',
-  //   },
-  //   {
-  //     name: 'Black Jeans',
-  //     price: 149,
-  //     orderedAmount: 1,
-  //     details: 'M',
-  //     productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17260',
-  //   },
-  // ],
-};
+const initialState = localStorage.getItem('cartProducts')
+  ? { products: JSON.parse(localStorage.getItem('cartProducts')) }
+  : { products: [] };
 
 /* REDUCER */
 

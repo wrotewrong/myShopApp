@@ -13,6 +13,7 @@ import {
 } from '../../../redux/orderRedux';
 import { useForm } from 'react-hook-form';
 import { PRODUCT_MAX_ORDER, PRODUCT_MIN_ORDER } from '../../../config';
+import store from '../../../redux/store';
 
 const SingleProductPage = () => {
   const { id } = useParams();
@@ -32,9 +33,9 @@ const SingleProductPage = () => {
   }, [dispatch, id]);
 
   const handleAddToCart = () => {
-    if (Object.keys(orders).length === 0) {
-      dispatch(createOrder());
-    }
+    // if (Object.keys(orders).length === 0) {
+    //   dispatch(createOrder());
+    // }
 
     if (orders?.products?.find((product) => product.productId === id)) {
       alert(
@@ -49,6 +50,12 @@ const SingleProductPage = () => {
           productId: id,
           details: '',
         }),
+      );
+
+      const state = store.getState();
+      localStorage.setItem(
+        'cartProducts',
+        JSON.stringify(state.orders.products),
       );
     }
   };

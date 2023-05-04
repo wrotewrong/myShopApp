@@ -2,6 +2,7 @@ import Button from 'react-bootstrap/Button';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { editOrder, removeProductFromOrder } from '../../../redux/orderRedux';
+import store from '../../../redux/store';
 
 const CartSummary = ({
   productId,
@@ -23,10 +24,16 @@ const CartSummary = ({
         details: detailsState,
       }),
     );
+
+    const state = store.getState();
+    localStorage.setItem('cartProducts', JSON.stringify(state.orders.products));
   }, [dispatch, productId, amountState, detailsState]);
 
   const handleRemove = () => {
     dispatch(removeProductFromOrder(productId));
+
+    const state = store.getState();
+    localStorage.setItem('cartProducts', JSON.stringify(state.orders.products));
   };
 
   return (
