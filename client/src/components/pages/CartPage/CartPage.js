@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getOrdersProduct } from '../../../redux/orderRedux';
 import CartSummary from '../../features/CartSummary/CartSummary';
+import CartTotalCost from '../../features/CartTotalCost/CartTotalCost';
 
 const Cart = () => {
   const products = useSelector(getOrdersProduct);
@@ -24,7 +25,7 @@ const Cart = () => {
             );
           })}
         </div>
-
+        <CartTotalCost></CartTotalCost>
         <NavLink to="/">
           <Button>Get back to shopping</Button>
         </NavLink>

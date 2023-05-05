@@ -4,7 +4,7 @@ import Home from './components/pages/Home/Home';
 import SingleProductPage from './components/pages/SingleProductPage/SingleProductPage';
 import NotFound from './components/pages/NotFound/NotFound';
 import Cart from './components/pages/CartPage/CartPage';
-import Summary from './components/pages/Summary/Summary';
+import Summary from './components/pages/SummaryPage/SummaryPage';
 import Container from 'react-bootstrap/Container';
 
 function App() {

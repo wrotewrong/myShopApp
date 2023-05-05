@@ -8,6 +8,7 @@ import {
 } from '../../../redux/orderRedux';
 import Button from 'react-bootstrap/esm/Button';
 import { useState, useEffect } from 'react';
+import CartTotalCost from '../../features/CartTotalCost/CartTotalCost';
 
 const Summary = () => {
   const products = useSelector(getOrdersProduct);
@@ -17,21 +18,11 @@ const Summary = () => {
   const [address, setAddress] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [totalCost, setTotalCost] = useState('');
 
   useEffect(() => {
-    setTotalCost(
-      products.reduce(
-        (acc, product) => acc + product.orderedAmount * product.price,
-        0,
-      ),
-    );
-  }, [products]);
-
-  useEffect(() => {
-    const userinfo = { name, address, email, phone, totalCost };
+    const userinfo = { name, address, email, phone };
     dispatch(addUserinfoToOrder(userinfo));
-  }, [dispatch, name, address, email, phone, totalCost]);
+  }, [dispatch, name, address, email, phone]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -55,8 +46,7 @@ const Summary = () => {
             );
           })}
         </div>
-        <div>Total order cost: {totalCost}</div>
-
+        <CartTotalCost></CartTotalCost>
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="name">Name: </label>
