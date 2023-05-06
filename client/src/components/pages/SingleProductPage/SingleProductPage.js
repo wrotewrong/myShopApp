@@ -6,25 +6,15 @@ import {
 } from '../../../redux/productRedux';
 import Button from 'react-bootstrap/Button';
 import { useEffect, useState } from 'react';
-import {
-  addProductToOrder,
-  //   createOrder,
-  getOrders,
-} from '../../../redux/orderRedux';
-import { useForm } from 'react-hook-form';
-import { PRODUCT_MAX_ORDER, PRODUCT_MIN_ORDER } from '../../../config';
+import { addProductToOrder, getOrders } from '../../../redux/orderRedux';
 import store from '../../../redux/store';
+import AmountInput from '../../features/AmountInput/AmountInput';
 
 const SingleProductPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const product = useSelector((state) => getProductById(state, id));
   const orders = useSelector(getOrders);
-  const {
-    register,
-    handleSubmit: validate,
-    formState: { errors },
-  } = useForm();
 
   const [productAmount, setPrdouctAmount] = useState(1);
 
@@ -32,10 +22,8 @@ const SingleProductPage = () => {
     dispatch(loadProductByIdRequest(id));
   }, [dispatch, id]);
 
-  const handleAddToCart = () => {
-    // if (Object.keys(orders).length === 0) {
-    //   dispatch(createOrder());
-    // }
+  const handleAddToCart = (e) => {
+    e.preventDefault();
 
     if (orders?.products?.find((product) => product.productId === id)) {
       alert(
@@ -118,35 +106,14 @@ const SingleProductPage = () => {
           <div className="col-12 mt-2 row justify-content-end">
             <form
               className="col-12 mt-4 row justify-content-center"
-              onSubmit={validate(handleAddToCart)}
+              onSubmit={handleAddToCart}
             >
               <div className="mr-2">
-                Amount:
-                <input
-                  {...register('amount', {
-                    required: 'You must specify the amount you want to order',
-                    min: {
-                      value: PRODUCT_MIN_ORDER,
-                      message: `You must add at least ${PRODUCT_MIN_ORDER} product`,
-                    },
-                    max: {
-                      value: PRODUCT_MAX_ORDER,
-                      message: `You can't order more than ${PRODUCT_MAX_ORDER} products`,
-                    },
-                    pattern: {
-                      value: /^[0-9]*$/,
-                      message: 'The amount must be an integer',
-                    },
-                  })}
+                <AmountInput
+                  editable={true}
                   value={productAmount}
-                  onChange={(e) => setPrdouctAmount(e.target.value)}
-                  type="number"
-                ></input>
-                {errors.amount && (
-                  <span className="d-block form-text text-danger mt-2">
-                    {errors.amount.message}
-                  </span>
-                )}
+                  onChangeFunc={setPrdouctAmount}
+                ></AmountInput>
               </div>
               <div>
                 <Button type="submit" variant="outline-success">
