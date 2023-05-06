@@ -1,4 +1,6 @@
 import { API_URL } from '../config';
+import { endRequest, startRequest } from './requestRedux';
+
 /* SELECTORS */
 export const getProducts = ({ products }) => products.data;
 
@@ -20,20 +22,24 @@ export const loadProductById = (payload) => ({
 /* THUNKS */
 export const loadProductsRequest = () => {
   return async (dispatch) => {
+    dispatch(startRequest({ name: 'LOAD_PRODUCTS' }));
     await fetch(`${API_URL}/products`)
       .then((res) => res.json())
       .then((res) => {
         dispatch(loadProducts(res));
+        dispatch(endRequest({ name: 'LOAD_PRODUCTS' }));
       });
   };
 };
 
 export const loadProductByIdRequest = (id) => {
   return async (dispatch) => {
+    dispatch(startRequest({ name: 'LOAD_PRODUCT_BY_ID' }));
     await fetch(`${API_URL}/products/${id}`)
       .then((res) => res.json())
       .then((res) => {
         dispatch(loadProductById(res));
+        dispatch(endRequest({ name: 'LOAD_PRODUCT_BY_ID' }));
       });
   };
 };

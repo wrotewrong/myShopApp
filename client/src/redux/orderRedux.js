@@ -1,4 +1,5 @@
 import { API_URL } from '../config';
+
 /* SELECTORS */
 
 export const getOrders = ({ orders }) => orders;
@@ -16,6 +17,7 @@ export const REMOVE_PRODUCT_FROM_ORDER = createActionName(
   'REMOVE_PRODUCT_FROM_ORDER',
 );
 export const EDIT_ORDER = createActionName('EDIT_ORDER');
+export const REMOVE_ORDER = createActionName('REMOVE_ORDER');
 
 /* ACTION CREATORS */
 
@@ -35,6 +37,9 @@ export const editOrder = (payload) => ({
   payload,
   type: EDIT_ORDER,
 });
+export const removeOrder = () => ({
+  type: REMOVE_ORDER,
+});
 
 /* THUNKS */
 
@@ -50,6 +55,7 @@ export const postOrderRequest = (order) => {
 
     fetch(`${API_URL}/orders`, options).then((res) => {
       if (res.status === 201) {
+        dispatch(removeOrder());
         localStorage.removeItem('cartProducts');
         alert('Your order has been sent!');
       }
@@ -93,6 +99,8 @@ export default function reducer(statePart = initialState, action = {}) {
             : product,
         ),
       };
+    case REMOVE_ORDER:
+      return { products: [] };
     default:
       return statePart;
   }

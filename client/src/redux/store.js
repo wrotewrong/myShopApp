@@ -4,11 +4,13 @@ import thunk from 'redux-thunk';
 // import reducers
 import products from './productRedux';
 import orders from './orderRedux';
+import requests from './requestRedux';
 
 // combine reducers
 const rootReducer = combineReducers({
   products,
   orders,
+  requests,
 });
 
 const composeEnhancers =
