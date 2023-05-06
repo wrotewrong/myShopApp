@@ -66,7 +66,7 @@ export class ProductOrdersDTO {
 
   @IsOptional()
   @IsString()
-  @MaxLength(500)
+  @MaxLength(100)
   details: string;
 
   @IsNotEmpty()
