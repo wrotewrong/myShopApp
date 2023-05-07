@@ -84,8 +84,8 @@ const SingleProductPage = () => {
                 <h1>Price: {product?.price}</h1>
               </div>
               <p className="text-justify">{product?.description}</p>
-              <div className="row no-gutters col-12 justify-content-between align-items-end ">
-                <div className="col-12 col-sm-4 mb-1">
+              <div className="row no-gutters px-0 col-12 justify-content-between align-items-end ">
+                <div className="col-12 col-sm-4 mb-1 px-1">
                   <img
                     src={product?.images[1]?.url}
                     className="img-fluid"
@@ -95,7 +95,7 @@ const SingleProductPage = () => {
                     }}
                   />
                 </div>
-                <div className="col-12 col-sm-4 mb-1">
+                <div className="col-12 col-sm-4 mb-1 px-1">
                   <img
                     src={product?.images[2]?.url}
                     className="img-fluid"
@@ -105,7 +105,7 @@ const SingleProductPage = () => {
                     }}
                   />
                 </div>
-                <div className="col-12 col-sm-4 mb-1">
+                <div className="col-12 col-sm-4 mb-1 px-1">
                   <img
                     src={product?.images[3]?.url}
                     className="img-fluid"
@@ -117,20 +117,23 @@ const SingleProductPage = () => {
                 </div>
               </div>
             </div>
-            <div className="col-12 mt-2 row justify-content-end">
+            <div className="col-12 mt-2 row no-gutters justify-content-center">
               <form
-                className="col-12 mt-4 row justify-content-center"
+                className="col-12 col-sm-9 mt-4 row justify-content-center"
                 onSubmit={handleAddToCart}
               >
-                <div className="mr-2">
-                  <AmountInput
-                    editable={true}
-                    value={productAmount}
-                    onChangeFunc={setPrdouctAmount}
-                  ></AmountInput>
+                <div className="col-12 col-sm-6 mt-2 row align-items-center justify-content-center">
+                  <div className="px-2 text-right">Amount:</div>
+                  <div className="col-5 col-sm-6 px-0">
+                    <AmountInput
+                      editable={true}
+                      value={productAmount}
+                      onChangeFunc={setPrdouctAmount}
+                    ></AmountInput>
+                  </div>
                 </div>
-                <div>
-                  <Button type="submit" variant="outline-success">
+                <div className="mt-2 text-center">
+                  <Button type="submit" variant="outline-primary">
                     Add to cart
                   </Button>
                 </div>

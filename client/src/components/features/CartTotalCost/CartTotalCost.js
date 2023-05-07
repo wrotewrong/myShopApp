@@ -21,7 +21,11 @@ const CartTotalCost = () => {
     dispatch(addUserinfoToOrder({ totalCost }));
   }, [dispatch, products, totalCost]);
 
-  return <div>Total order cost: {totalCost}</div>;
+  return (
+    <div className="text-uppercase my-3">
+      <h5>Total order cost: {totalCost}</h5>
+    </div>
+  );
 };
 
 export default CartTotalCost;

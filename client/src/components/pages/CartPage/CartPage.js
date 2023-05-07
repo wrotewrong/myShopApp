@@ -25,13 +25,17 @@ const Cart = () => {
             );
           })}
         </div>
-        <CartTotalCost></CartTotalCost>
-        <NavLink to="/">
-          <Button>Get back to shopping</Button>
-        </NavLink>
-        <NavLink to="/summary">
-          <Button>Proceed to summary</Button>
-        </NavLink>
+        <div className="row justify-content-center">
+          <CartTotalCost></CartTotalCost>
+        </div>
+        <div className="row justify-content-center">
+          <NavLink to="/">
+            <Button className="m-1">Get back to shopping</Button>
+          </NavLink>
+          <NavLink to="/summary">
+            <Button className="m-1">Proceed to summary</Button>
+          </NavLink>
+        </div>
       </>
     );
   }

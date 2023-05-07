@@ -38,9 +38,10 @@ const CartSummary = ({
   };
 
   return (
-    <div className="col-12 mx-0 px-0 my-1 row border align-items-center">
-      <div className="col-6 col-sm-3 col-md-3   px-0 text-center">{name}</div>
-      <div className="col-6 col-sm-3 col-md-1  px-0 m-0 text-center">
+    <div className="col-12 mx-0 px-0 my-1 row border rounded align-items-center">
+      <div className="col-6 col-sm-3 col-md-3 px-0 text-center">{name}</div>
+      <div className="col-6 col-sm-3 col-md-1 px-0 m-0 text-center">
+        Amount:
         <AmountInput
           editable={editable}
           value={amountState}

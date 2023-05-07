@@ -16,7 +16,6 @@ const AmountInput = ({ editable, value, onChangeFunc }) => {
 
   return (
     <div className="mx-2">
-      Amount:
       <input
         className="w-100"
         disabled={!editable}
