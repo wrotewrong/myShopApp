@@ -68,7 +68,7 @@ const SingleProductPage = () => {
           <div className="row mt-5">
             <div className="col-12 col-lg-5 mt-3 text-center">
               <img
-                src={product?.images[0].url}
+                src={product?.images[0]?.url}
                 className="img-fluid"
                 alt="product"
                 style={{

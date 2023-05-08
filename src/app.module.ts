@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   Module,
   NestModule,
@@ -19,7 +20,7 @@ import { join } from 'path';
     ProductsModule,
     OrdersModule,
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'public'),
+      rootPath: join(__dirname, '../../', 'client', 'build'),
     }),
   ],
   controllers: [AppController],
